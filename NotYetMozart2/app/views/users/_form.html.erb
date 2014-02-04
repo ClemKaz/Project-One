@@ -16,20 +16,16 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
-  </div>
-  <div class="field">
-    <%= f.label :password_digest %><br />
-    <%= f.text_field :password_digest %>
-  </div>
-  <div class="field">
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :created_at %><br />
-    <%= f.datetime_select :created_at %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :user_image %><br />

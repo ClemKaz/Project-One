@@ -4,7 +4,6 @@
   <tr>
     <th>Name</th>
     <th>Role</th>
-    <th>Password digest</th>
     <th>Email</th>
     <th>Created at</th>
     <th>User image</th>
@@ -17,8 +16,6 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
-    <td><%= user.role %></td>
-    <td><%= user.password_digest %></td>
     <td><%= user.email %></td>
     <td><%= user.created_at %></td>
     <td><%= image_tag user.user_image.thumb.url %></td>
@@ -32,4 +29,4 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+
