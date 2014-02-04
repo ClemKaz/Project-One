@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+  rescue_from CanCan::AccessDenied do |exception|
+  redirect_to root_path, alert: "get stuffed, hacker!!!"   # Displays an alert message, when we come to the AccessDenied Error.
+    end
+
   private
   def current_user
     begin
