@@ -8,6 +8,13 @@
 </head>
 <body>
 
+  <nav>
+    <li><%= link_to 'Home', root_path %></li><br>
+    <li><%= link_to 'Users', users_path %></li><br>
+    <li><%= link_to 'Songs', songs_path %></li><br>
+    <li><%= link_to 'My Profile' %></li><br>
+  </nav>
+
 <%= yield %>
 
 </body>
