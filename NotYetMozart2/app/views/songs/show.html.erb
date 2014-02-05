@@ -17,11 +17,6 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @song.user_id %>
-</p>
-
-<p>
  <%= image_tag @song.song_image.detail.url %>
 </p>
 
@@ -29,18 +24,21 @@
 
 <% @song.comments.each do |comment| %>
   <tr>
+    <td><%= link_to comment.user.name, comment.user %></td>
+    <br>
     <td><%= comment.comment %></td>
-    <td><%= comment.user.name %></td>
-    <td><%= comment.created_at %></td>
+    <br>
+    <br>
     <td><%= comment.flag %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Edit', edit_comment_path(comment) if can? :edit, comment %></td>
+    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, comment %></td>
   </tr>
   <br>
 <% end %>
 
 
 
-<%= link_to 'Edit', edit_song_path(@song) %> |
+
+
+<%= link_to 'Edit', edit_song_path(@song) if can? :edit, @song%> |
 <%= link_to 'Back', songs_path %>
