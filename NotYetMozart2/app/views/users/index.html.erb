@@ -1,12 +1,13 @@
-<h1>Listing users</h1>
+<h1></h1>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Created at</th>
-    <th>User image</th>
-    <th>Background image</th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -14,14 +15,8 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td>
-    <td><%= user.created_at %></td>
-    <td><%= image_tag user.user_image.thumb.url %></td>
-    <td><%= image_tag user.background_image.detail.url %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><h4><%= image_tag user.user_image.thumb.url %></h4></td>
+    <td><h4><%= link_to user.name, user %></h4></td>
   </tr>
 <% end %>
 </table>

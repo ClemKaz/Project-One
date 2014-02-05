@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @song.name %>
+
+  <h2><%= @song.name %></h2>
+  <h3><%= link_to @song.user.name, @song.user %></h3>
 </p>
 
 <p>
@@ -13,7 +14,7 @@
 
 <p>
   <b>Created at:</b>
-  <%= @song.created_at %>
+  <%= @song.created_at.strftime('%B:%Y') %>
 </p>
 
 <p>
@@ -25,7 +26,7 @@
 <% @song.comments.each do |comment| %>
   <tr>
     <td><%= link_to comment.user.name, comment.user %></td>
-    <br>
+
     <td><%= comment.comment %></td>
     <br>
     <br>

@@ -1,20 +1,24 @@
 <h1></h1>
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <table>
 
 
 <% @songs.each do |song| %>
   <tr>
-    <td><%= link_to song.user.name, song.user %></td>
-    <td><%= link_to song.name, song %></td>
-    <br>
+    <td><%= image_tag song.user.user_image.thumb.url %></td>
+    <td><h4><%= link_to song.user.name, song.user %></h4></td>
+    <td><h4><%= link_to song.name, song %></h4></td>
     <td>
         <audio controls>
             <source src=<%= song.song_file.url %> type="audio/mpeg">
         </audio>
     </td>
 
-    <td><%= image_tag song.song_image.thumb.url %></td>
+
   </tr>
 <% end %>
 </table>

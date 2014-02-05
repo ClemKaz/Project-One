@@ -18,11 +18,7 @@
 
 <p>
   <b>Created at:</b>
-  <%= @user.created_at %>
-</p>
-
-<p>
- <%= image_tag @user.user_image.detail.url %>
+  <%= @user.created_at.strftime('%B:%Y') %>
 </p>
 
 <p>
@@ -30,15 +26,38 @@
 </p>
 
 <p>
-  <% @user.songs.each do |song| %>
-  <%=link_to song.name, song_path(song) %>
-  <%= song.created_at %>
-  <audio controls>
-    <source src=<%= song.song_file.url %> type="audio/mpeg">
-  </audio>
-  <% end %>
+ <%= image_tag @user.user_image.detail.url %>
 </p>
+
+
+<h1></h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table>
+
+
+<% @user.songs.each do |song| %>
+  <tr>
+    <td><%=link_to song.name, song_path(song) %></td>
+    <td>
+      <audio controls>
+      <source src=<%= song.song_file.url %> type="audio/mpeg">
+      </audio>
+    </td>
+    <% end %>
+  </tr>
+</table>
+</br>
+
+
+
+
+
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
