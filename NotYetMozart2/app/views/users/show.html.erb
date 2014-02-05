@@ -29,6 +29,16 @@
  <%= image_tag @user.background_image.detail.url %>
 </p>
 
+<p>
+  <% @user.songs.each do |song| %>
+  <%=link_to song.name, song_path(song) %>
+  <%= song.created_at %>
+  <audio controls>
+    <source src=<%= song.song_file.url %> type="audio/mpeg">
+  </audio>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

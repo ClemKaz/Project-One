@@ -1,4 +1,7 @@
 NotYetMozart2::Application.routes.draw do
+
+
+
   get "sessions/new"
 
   get "sessions/create"
@@ -7,6 +10,7 @@ NotYetMozart2::Application.routes.draw do
 
   resources :songs
   resources :users
+  resources :comments
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy', as: :logout

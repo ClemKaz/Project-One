@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :songs
+  has_many :comments
+
   attr_accessible :background_image, :created_at, :email, :name, :password, :password_confirmation, :role, :user_image
 
   before_validation :set_default_role

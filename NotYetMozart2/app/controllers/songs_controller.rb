@@ -14,6 +14,7 @@ class SongsController < ApplicationController
   # GET /songs/1.json
   def show
     @song = Song.find(params[:id])
+    @comment = Comment.new()
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +42,7 @@ class SongsController < ApplicationController
   # POST /songs.json
   def create
     @song = Song.new(params[:song])
-
+    @song.user = current_user
 
     respond_to do |format|
       if @song.save

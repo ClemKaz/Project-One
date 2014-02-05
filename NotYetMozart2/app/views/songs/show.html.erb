@@ -25,6 +25,22 @@
  <%= image_tag @song.song_image.detail.url %>
 </p>
 
+<%= render 'comment_form' %>
+
+<% @song.comments.each do |comment| %>
+  <tr>
+    <td><%= comment.comment %></td>
+    <td><%= comment.user.name %></td>
+    <td><%= comment.created_at %></td>
+    <td><%= comment.flag %></td>
+    <td><%= link_to 'Show', comment %></td>
+    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <br>
+<% end %>
+
+
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
