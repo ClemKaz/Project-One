@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_many :songs
-  has_many :comments
+  has_many :songs, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   attr_accessible :background_image, :created_at, :email, :name, :password, :password_confirmation, :role, :user_image
 

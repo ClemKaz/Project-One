@@ -37,7 +37,7 @@ class BackgroundImageUploader < CarrierWave::Uploader::Base
   end
 
   version :detail do
-    process resize_to_fit: [1000,300]
+    process resize_to_fit: [1024,768]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
