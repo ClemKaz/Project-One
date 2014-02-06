@@ -23,6 +23,8 @@ class Ability
       can :manage, User do |user_object|
         user_object == user
       end
+      cannot :view_role, User
+      cannot :view_email, User
 
 
     else
@@ -32,6 +34,7 @@ class Ability
   end
 
 end
+
 
 
     # Define abilities for the passed in user here. For example:

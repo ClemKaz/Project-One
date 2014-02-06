@@ -1,23 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @user.name %>
+  <h2><%= @user.name %></h2>
 </p>
 
 <p>
-  <b>Role:</b>
-  <%= @user.role %>
+  <% if can? :view_role, User %>
+        <b>Role:</b>
+         <%= @user.role %>
+  <% end %>
 </p>
 
 
 <p>
-  <b>Email:</b>
-  <%= @user.email %>
+  <% if can? :view_email, User %>
+      <b>Email:</b>
+        <%= @user.email %>
+  <% end %>
 </p>
 
 <p>
-  <b>Created at:</b>
+  <b>Rocking NYM since:</b>
   <%= @user.created_at.strftime('%B:%Y') %>
 </p>
 
@@ -55,9 +58,8 @@
 
 
 
+<%= link_to 'Delete Profile |', @user, method: :delete, data: { confirm: 'Are you sure you want to delete your NYM profile?' } if can? :destroy, @user%>
+<%= link_to 'Edit |', edit_user_path(@user) if can? :edit, @user %>
+<%= link_to 'Back to All Users', users_path %>
 
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
 
