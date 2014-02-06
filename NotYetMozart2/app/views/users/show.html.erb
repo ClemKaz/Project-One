@@ -60,6 +60,6 @@
 
 <%= link_to 'Delete Profile |', @user, method: :delete, data: { confirm: 'Are you sure you want to delete your NYM profile?' } if can? :destroy, @user%>
 <%= link_to 'Edit |', edit_user_path(@user) if can? :edit, @user %>
-<%= link_to 'Back to All Users', users_path %>
+<%= link_to 'All Users', users_path %>
 
 

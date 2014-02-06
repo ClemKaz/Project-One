@@ -21,25 +21,25 @@
  <%= image_tag @song.song_image.detail.url %>
 </p>
 
-<%= render 'comment_form' %>
+<% if can? :create, Song %>
+  <%= render 'comment_form' %>
 
-<% @song.comments.each do |comment| %>
-  <tr>
-    <td><%= link_to comment.user.name, comment.user %></td>
-
-    <td><%= comment.comment %></td>
+  <% @song.comments.each do |comment| %>
+    <tr>
+      <br>
+      <td><%= link_to comment.user.name, comment.user %></td>
+      <td><%= comment.comment %></td>
+      <td><%= comment.flag %></td>
+      <td><%= link_to 'Edit', edit_comment_path(comment) if can? :edit, comment %></td>
+      <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, comment %></td>
+    </tr>
     <br>
-    <br>
-    <td><%= comment.flag %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) if can? :edit, comment %></td>
-    <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, comment %></td>
-  </tr>
-  <br>
+  <% end %>
 <% end %>
 
 
 
 
-
-<%= link_to 'Edit', edit_song_path(@song) if can? :edit, @song%> |
-<%= link_to 'Back', songs_path %>
+<br>
+<%= link_to 'Edit |', edit_song_path(@song) if can? :edit, @song%>
+<%= link_to 'All Songs', songs_path %>
