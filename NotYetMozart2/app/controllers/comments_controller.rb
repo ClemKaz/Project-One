@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    # @comments = Comment.where('flag')
+    @comments = Comment.where(flag: true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,6 +32,17 @@ class CommentsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @comment }
     end
+  end
+
+  def flag
+    @comment = Comment.find(params[:id])
+    @comment.flag = true
+    @comment.save
+    redirect_to @comment.song
+  end
+
+  def flagged_comments
+      @comments = Comment.where(flag: true)
   end
 
   # GET /comments/1/edit

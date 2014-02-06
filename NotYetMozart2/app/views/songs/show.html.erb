@@ -29,7 +29,11 @@
       <br>
       <td><%= link_to comment.user.name, comment.user %></td>
       <td><%= comment.comment %></td>
-      <td><%= comment.flag %></td>
+        <% if comment.flag  %> 
+          <td>Comment reported as innapropriate</td>
+        <% else %> 
+          <%= link_to 'Report', flag_comment_path(comment), data: { confirm: 'Flag comment as innapropriate?' } %> 
+          <% end %>
       <td><%= link_to 'Edit', edit_comment_path(comment) if can? :edit, comment %></td>
       <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, comment %></td>
     </tr>

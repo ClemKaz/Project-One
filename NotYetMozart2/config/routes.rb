@@ -10,7 +10,12 @@ NotYetMozart2::Application.routes.draw do
 
   resources :songs
   resources :users
-  resources :comments
+
+  resources :comments do
+    member do
+      get :flag
+    end
+  end
 
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy', as: :logout
