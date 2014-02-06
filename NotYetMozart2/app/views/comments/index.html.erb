@@ -1,4 +1,4 @@
-<h1>Listing comments</h1>
+<h1>Listing flagged comments</h1>
 
 <table>
   <tr>
@@ -6,7 +6,7 @@
     <th>Song</th>
     <th>User</th>
     <th>Created at</th>
-    <th>Flag</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,10 +15,9 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.comment %></td>
-    <td><%= comment.song_id %></td>
-    <td><%= comment.user_id %></td>
+    <td><%= link_to comment.song.name, comment.song %></td>
+    <td><%= link_to comment.user.name, comment.user %></td>
     <td><%= comment.created_at %></td>
-    <td><%= comment.flag %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +27,4 @@
 
 <br />
 
-<%= link_to 'New Comment', new_comment_path %>
+

@@ -41,9 +41,6 @@ class CommentsController < ApplicationController
     redirect_to @comment.song
   end
 
-  def flagged_comments
-      @comments = Comment.where(flag: true)
-  end
 
   # GET /comments/1/edit
   def edit
@@ -68,7 +65,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @comment.song, notice: 'Comment was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,7 +81,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+      format.html { redirect_to @comment.song }
       format.json { head :no_content }
     end
   end

@@ -6,7 +6,6 @@ class Ability
   def initialize(user)
     user ||= User.new #If I dont pass a user into this, create a new user
 
-
     if user.role?(:admin)
         can :manage, :all #If admin, they can do everything like create, update, read, write, etc.
 
@@ -23,6 +22,11 @@ class Ability
       can :manage, User do |user_object|
         user_object == user
       end
+
+      can :manage, Comment do |comment|
+        comment.user == user
+      end
+
       cannot :view_role, User
       cannot :view_email, User
 

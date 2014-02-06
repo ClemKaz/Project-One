@@ -7,19 +7,22 @@
 
 <table>
   <tr>
-
+  <% if can? :manage, :all %>
     <th>User Image</th>
     <th>User name</th>
     <th>Email</th>
     <th>Role</th>
+  <% end %>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><h4><%= image_tag user.user_image.thumb.url %></h4></td>
     <td><h4><%= link_to user.name, user %></h4></td>
-    <td><h4><%= user.email %></h4></td>
-    <td><h4><%= user.role %></h4></td>
+    <% if can? :manage, :all %>
+      <td><h4><%= user.email %></h4></td>
+      <td><h4><%= user.role %></h4></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
