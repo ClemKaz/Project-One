@@ -17,7 +17,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><h4><%= image_tag user.user_image.thumb.url %></h4></td>
+    <td><h4><div class="user_pic"><%= image_tag user.user_image.detail.url %></div></h4></td>
     <td><h4><%= link_to user.name, user %></h4></td>
     <% if can? :manage, :all %>
       <td><h4><%= user.email %></h4></td>

@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<style>
+body {
+  background: url(<%= @user.background_image.detail.url %>);
+  background-size: cover;
+}
+</style>
 <p>
   <h2><%= @user.name %></h2>
 </p>
@@ -25,11 +30,10 @@
 </p>
 
 <p>
- <%= image_tag @user.background_image.detail.url %>
 </p>
 
 <p>
- <%= image_tag @user.user_image.detail.url %>
+ <div class="user_pic"><%= image_tag @user.user_image.detail.url %></div>
 </p>
 
 
@@ -50,6 +54,7 @@
       <source src=<%= song.song_file.url %> type="audio/mpeg">
       </audio>
     </td>
+    <td><div class="song_pic2"><%= image_tag song.song_image.thumb.url %></div></td>
     <% end %>
   </tr>
 </table>

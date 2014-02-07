@@ -7,9 +7,11 @@
 <table>
 
 
+
+
 <% @songs.each do |song| %>
   <tr>
-    <td><%= image_tag song.user.user_image.thumb.url %></td>
+    <td><div class="user_pic"><%= image_tag song.user.user_image.detail.url %></div></li></td>
     <td><h4><%= link_to song.user.name, song.user %></h4></td>
     <td><h4><%= link_to song.name, song %></h4></td>
     <td>

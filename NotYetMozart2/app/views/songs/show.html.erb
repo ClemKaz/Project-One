@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
-
+<style>
+body {
+  background: url(<%= @song.user.background_image.detail.url %>);
+  background-size: cover;
+}
+</style>
 <p>
 
   <h2><%= @song.name %></h2>
@@ -17,8 +22,9 @@
   <%= @song.created_at.strftime('%B:%Y') %>
 </p>
 
+
 <p>
- <%= image_tag @song.song_image.detail.url %>
+ <div class="song_pic"><%= image_tag @song.song_image.detail.url %></div>
 </p>
 
 <% if can? :create, Song %>
@@ -30,7 +36,7 @@
       <td><%= link_to comment.user.name, comment.user %></td>
       <td><%= comment.comment %></td>
         <% if comment.flag  %> 
-          <td>Flagged</td>
+          <td><span class="flagged">Flagged</span></td>
         <% else %> 
           <%= link_to 'Report', flag_comment_path(comment), data: { confirm: 'Flag comment as innapropriate?' } %> 
           <% end %>
